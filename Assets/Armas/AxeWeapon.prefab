@@ -143,8 +143,7 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.6043273
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2940291601654413660, guid: 355e360fb2c008c4fae7edfc4f7e0616, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 355e360fb2c008c4fae7edfc4f7e0616, type: 3}
 --- !u!1 &5365016034971272610 stripped
 GameObject:
@@ -163,6 +162,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ad479d562529274d8eae116a15af055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4063028103819758327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5365016034971272610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d27e507d6650a748b2bfcfad6f89951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 5
+  interactables:
+  - Lever
+  - Vines
+  - Chest
+  - Torch
+  - 
+  interactable: 1
 --- !u!4 &9013578447319686984 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4167781677971868855, guid: 355e360fb2c008c4fae7edfc4f7e0616, type: 3}
