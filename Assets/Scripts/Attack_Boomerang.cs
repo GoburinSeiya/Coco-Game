@@ -69,7 +69,7 @@ public class Attack_Boomerang : MonoBehaviour
             {
                 Debug.Log("Inicia el ataque de boomerang");
                 Bmrg = GameObject.Instantiate(Boomerang_Prefab);
-                Bmrg.transform.SetParent(this.gameObject.transform);
+                //Bmrg.transform.SetParent(this.gameObject.transform);
                 Bmrg.transform.rotation = boomerangSpawnTransform.rotation;
                 Bmrg.transform.position = boomerangSpawnTransform.position;
                 Bmrg.transform.position += Bmrg.transform.rotation * Vector3.forward * 1.0f;

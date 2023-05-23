@@ -110,14 +110,29 @@ public class inputManager : MonoBehaviour
         {
             Debug.Log("Axe");
             axeInput = false;
-            playerActions.HandleAxeAttack(playerInventory.rightWeapon);
+            if (playerInventory.rightWeapon == null)
+            {
+                return;
+            }
+            else
+            {
+                playerActions.HandleAxeAttack(playerInventory.rightWeapon);
+            }
         }
 
         if(torchInput)
         {
             Debug.Log("Torch");
             torchInput = false;
-            playerActions.HandleTorchAttack(playerInventory.leftWeapon);
+            if (playerInventory.leftWeapon == null)
+            {
+                return;
+            }
+            else
+            {
+                playerActions.HandleTorchAttack(playerInventory.leftWeapon);
+            }
+            
         }
     }
 
