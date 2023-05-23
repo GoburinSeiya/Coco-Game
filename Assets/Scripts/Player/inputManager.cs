@@ -27,9 +27,14 @@ public class inputManager : MonoBehaviour
     public bool biteInput;
     public bool axeInput;
     public bool boomerangInput;
+    public bool torchInput;
 
     [Header("Interacciones")]
     public bool A_Input;
+    
+    //[Header("Misc declarations")]
+    //public float startHeld = 0.0f;
+    //public float heldTime = 0.0f;
 
     private void Awake()
     {
@@ -48,6 +53,7 @@ public class inputManager : MonoBehaviour
             playerControls.PlayerActions.Jump.performed += i => jump_input = true; //Sintaxis para press
             playerControls.PlayerActions.Bite.performed += i => biteInput = true;
             playerControls.PlayerActions.Axe.performed += i => axeInput = true;
+            playerControls.PlayerActions.Torch.performed += i => torchInput = true;
             playerControls.PlayerActions.Boomerang.performed += i => boomerangInput = true; //Sintaxis para mantener el boton
             playerControls.PlayerActions.Boomerang.canceled += i => boomerangInput = false;
         }
@@ -65,6 +71,7 @@ public class inputManager : MonoBehaviour
         HandleMovementInput();
         HandleJumpInput();
         HandleAttackInput();
+        //HandleBoomerangInput();
         HandleInteractionInput();
     }
 
@@ -105,8 +112,28 @@ public class inputManager : MonoBehaviour
             axeInput = false;
             playerActions.HandleAxeAttack(playerInventory.rightWeapon);
         }
+
+        if(torchInput)
+        {
+            Debug.Log("Torch");
+            torchInput = false;
+            playerActions.HandleTorchAttack(playerInventory.leftWeapon);
+        }
     }
 
+    /*
+    private void HandleBoomerangInput()
+    {
+        if(boomerangInput)
+        {
+            playerActions.StartTimeCounter(startHeld);
+        }
+        else
+        {
+            playerActions.HandleBoomerangAttack(playerInventory.backWeapon, heldTime, startHeld);
+        }
+    }
+    */
     private void HandleInteractionInput()
     {
         playerControls.Interactions.Interactbutton.performed += i => A_Input = true;

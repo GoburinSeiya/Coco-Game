@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Torch
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
-  itemName: 
+  itemName: Torch
   modelPrefab: {fileID: 1936055926198674903, guid: 5b40f308e27e3d74686bf167b6cbf49e, type: 3}
   isUnarmed: 0
+  weaponLightAnimation: Antorchazo
+  weaponHeavyAnimation: 

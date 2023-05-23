@@ -5,9 +5,10 @@ using UnityEngine;
 public class Attack_Boomerang : MonoBehaviour
 {
     //transform del jugador
-    private Transform tr;
+    public Transform boomerangSpawnTransform;
     GameObject Boomerang_Prefab;
     GameObject Bmrg;
+    PlayerInventory playerInventory;
 
 
     public float moveSpeed = 0.03f;
@@ -22,8 +23,8 @@ public class Attack_Boomerang : MonoBehaviour
 
     private int animationStage = 0;
     /*
-        0 -> no está en la animación
-        1 -> etapa 1 de la animación
+        0 -> no estï¿½ en la animaciï¿½n
+        1 -> etapa 1 de la animaciï¿½n
         2 -> ''    2    ''
         3 -> ''    3    ''
         
@@ -33,15 +34,21 @@ public class Attack_Boomerang : MonoBehaviour
 
     void Start()
     {
-        tr = GetComponent<Transform>();
         Boomerang_Prefab = Resources.Load("Prefabs/Boomerang", typeof(GameObject)) as GameObject;
+    }
+
+    private void Awake() {
+        playerInventory = GetComponent<PlayerInventory>();
     }
 
     
     void Update()
     {
-        //Solo se ejecuta si no está en la animación
-        if(animationStage == 0)
+        if(playerInventory.backWeapon == null)
+            return;
+
+        //Solo se ejecuta si no estï¿½ en la animaciï¿½n
+        else if(animationStage == 0)
         {
             if (Input.GetKeyDown(KeyCode.E) && !countingTime)
             {
@@ -63,23 +70,23 @@ public class Attack_Boomerang : MonoBehaviour
                 Debug.Log("Inicia el ataque de boomerang");
                 Bmrg = GameObject.Instantiate(Boomerang_Prefab);
                 Bmrg.transform.SetParent(this.gameObject.transform);
-                Bmrg.transform.rotation = tr.rotation;
-                Bmrg.transform.position = tr.position;
+                Bmrg.transform.rotation = boomerangSpawnTransform.rotation;
+                Bmrg.transform.position = boomerangSpawnTransform.position;
                 Bmrg.transform.position += Bmrg.transform.rotation * Vector3.forward * 1.0f;
-                Bmrg.transform.RotateAround(tr.position, Vector3.up, 60);
+                Bmrg.transform.RotateAround(boomerangSpawnTransform.position, Vector3.up, 60);
                 animationStage = 1;
 
-                positionArray[0] = tr.position + (tr.rotation * (Vector3.forward + Vector3.right) * timeHeld * 3);
-                positionArray[1] = tr.position + (tr.rotation * (Vector3.forward + Vector3.left) * timeHeld * 3);
+                positionArray[0] = boomerangSpawnTransform.position + (boomerangSpawnTransform.rotation * (Vector3.forward + Vector3.right) * timeHeld * 3);
+                positionArray[1] = boomerangSpawnTransform.position + (boomerangSpawnTransform.rotation * (Vector3.forward + Vector3.left) * timeHeld * 3);
 
                 countingTime = false;
                 timeHeld = 0.0f;
             }
         }
-        else        //solo se ejecuta si está en la animación
+        else        //solo se ejecuta si estï¿½ en la animaciï¿½n
         {
             Debug.Log("Animation stage:" + animationStage);
-            positionArray[2] = tr.position;
+            positionArray[2] = boomerangSpawnTransform.position;
 
             Bmrg.transform.position = Vector3.MoveTowards(Bmrg.transform.position, positionArray[animationStage - 1], moveSpeed);
 

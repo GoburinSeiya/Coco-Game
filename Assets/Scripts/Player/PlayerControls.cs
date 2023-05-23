@@ -264,6 +264,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Torch"",
+                    ""type"": ""Button"",
+                    ""id"": ""ab3d4e25-a62b-47a0-967c-ab841ccdc305"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -354,6 +363,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Boomerang"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""47bb04b6-a3f2-4780-8a0b-51461d012ee3"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Torch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cf2d2d52-e8d2-412a-bee1-01faa5fa538c"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Torch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -409,6 +440,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActions_Bite = m_PlayerActions.FindAction("Bite", throwIfNotFound: true);
         m_PlayerActions_Axe = m_PlayerActions.FindAction("Axe", throwIfNotFound: true);
         m_PlayerActions_Boomerang = m_PlayerActions.FindAction("Boomerang", throwIfNotFound: true);
+        m_PlayerActions_Torch = m_PlayerActions.FindAction("Torch", throwIfNotFound: true);
         // Interactions
         m_Interactions = asset.FindActionMap("Interactions", throwIfNotFound: true);
         m_Interactions_Interactbutton = m_Interactions.FindAction("Interact button", throwIfNotFound: true);
@@ -531,6 +563,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Bite;
     private readonly InputAction m_PlayerActions_Axe;
     private readonly InputAction m_PlayerActions_Boomerang;
+    private readonly InputAction m_PlayerActions_Torch;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -539,6 +572,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Bite => m_Wrapper.m_PlayerActions_Bite;
         public InputAction @Axe => m_Wrapper.m_PlayerActions_Axe;
         public InputAction @Boomerang => m_Wrapper.m_PlayerActions_Boomerang;
+        public InputAction @Torch => m_Wrapper.m_PlayerActions_Torch;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -560,6 +594,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Boomerang.started += instance.OnBoomerang;
             @Boomerang.performed += instance.OnBoomerang;
             @Boomerang.canceled += instance.OnBoomerang;
+            @Torch.started += instance.OnTorch;
+            @Torch.performed += instance.OnTorch;
+            @Torch.canceled += instance.OnTorch;
         }
 
         private void UnregisterCallbacks(IPlayerActionsActions instance)
@@ -576,6 +613,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Boomerang.started -= instance.OnBoomerang;
             @Boomerang.performed -= instance.OnBoomerang;
             @Boomerang.canceled -= instance.OnBoomerang;
+            @Torch.started -= instance.OnTorch;
+            @Torch.performed -= instance.OnTorch;
+            @Torch.canceled -= instance.OnTorch;
         }
 
         public void RemoveCallbacks(IPlayerActionsActions instance)
@@ -650,6 +690,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnBite(InputAction.CallbackContext context);
         void OnAxe(InputAction.CallbackContext context);
         void OnBoomerang(InputAction.CallbackContext context);
+        void OnTorch(InputAction.CallbackContext context);
     }
     public interface IInteractionsActions
     {

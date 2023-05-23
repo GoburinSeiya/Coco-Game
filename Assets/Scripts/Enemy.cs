@@ -99,7 +99,7 @@ public class Enemy : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    public void TakeDamage(int damage)
+    /*public void TakeDamage(int damage)
     {
         health -= damage;
 
@@ -108,7 +108,7 @@ public class Enemy : MonoBehaviour
     private void DestroyEnemy()
     {
         Destroy(gameObject);
-    }
+    }*/
 
     private void OnDrawGizmosSelected()
     {

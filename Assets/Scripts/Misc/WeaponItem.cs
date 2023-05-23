@@ -8,7 +8,7 @@ public class WeaponItem : Item
     public GameObject modelPrefab;
     public bool isUnarmed;
 
-    [Header("Axe Animations")]
-    public string OH_Axe_Light_Attack;
-    public string OH_Axe_Heavy_Attack;
+    [Header("Attack animations")]
+    public string weaponLightAnimation;
+    public string weaponHeavyAnimation;
 }

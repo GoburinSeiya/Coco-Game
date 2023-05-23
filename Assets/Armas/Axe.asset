@@ -16,5 +16,5 @@ MonoBehaviour:
   itemName: Axe
   modelPrefab: {fileID: 6970338473173000804, guid: a25f83c7ed48d984da0872e509257e45, type: 3}
   isUnarmed: 0
-  OH_Axe_Light_Attack: OH_Axe_Light_Attack
-  OH_Axe_Heavy_Attack: 
+  weaponLightAnimation: Hachazo
+  weaponHeavyAnimation: 

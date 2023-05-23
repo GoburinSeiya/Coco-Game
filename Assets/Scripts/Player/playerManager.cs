@@ -103,6 +103,7 @@ public class playerManager : MonoBehaviour
                     {
                         hit.collider.GetComponent<Interactable>().Interact(this);
                         WeaponItem weaponPick = hit.collider.GetComponent<WeaponPickUp>().weapon; //Obtener un objeto asignado a otro script al momento de la colisión
+                        playerInventory.leftWeapon = weaponPick;
                         weaponSlotManager.LoadWeaponOnSlot(weaponPick, true, false);
                         Debug.Log(weaponPick);
                     }
@@ -123,6 +124,7 @@ public class playerManager : MonoBehaviour
                     {
                         hit.collider.GetComponent<Interactable>().Interact(this);
                         WeaponItem weaponPick = hit.collider.GetComponent<WeaponPickUp>().weapon;
+                        playerInventory.backWeapon = weaponPick;
                         weaponSlotManager.LoadWeaponOnSlot(weaponPick, false, true);
                         Debug.Log(weaponPick);
                     }
