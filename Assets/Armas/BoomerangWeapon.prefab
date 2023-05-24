@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 802391736663116412}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WeaponPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2321084097669945480}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BoomerangWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,9 +115,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3723060990244962101, guid: 01f3c184329157a4ea81b8c9b9c27a30, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7123356528218129288, guid: 01f3c184329157a4ea81b8c9b9c27a30, type: 3}
       propertyPath: m_Name
       value: Boomerang
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123356528218129288, guid: 01f3c184329157a4ea81b8c9b9c27a30, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121785625286103276, guid: 01f3c184329157a4ea81b8c9b9c27a30, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157673359041541199, guid: 01f3c184329157a4ea81b8c9b9c27a30, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01f3c184329157a4ea81b8c9b9c27a30, type: 3}

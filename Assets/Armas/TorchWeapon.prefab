@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2620741436215491943}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TorchPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3436951031517718790}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TorchWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,6 +158,10 @@ PrefabInstance:
     - target: {fileID: 7987348145974410266, guid: 9cab8f2d7eb831f4a92b42984b618144, type: 3}
       propertyPath: m_Name
       value: Torch
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987348145974410266, guid: 9cab8f2d7eb831f4a92b42984b618144, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cab8f2d7eb831f4a92b42984b618144, type: 3}
