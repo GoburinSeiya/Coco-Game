@@ -73,7 +73,7 @@ public class playerManager : MonoBehaviour
             {
                 Interactable interactableObject = hit.collider.GetComponent<Interactable>();
 
-                if(interactableObject != null)
+                if (interactableObject != null)
                 {
                     string interactableText = interactableObject.interactableText; 
                     //Ajustamos el mensaje de texto en la UI del objeto interactuable

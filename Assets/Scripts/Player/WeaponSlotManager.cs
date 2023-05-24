@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WeaponSlotManager : MonoBehaviour
@@ -34,7 +35,13 @@ public class WeaponSlotManager : MonoBehaviour
 
     public void LoadWeaponOnSlot(WeaponItem weaponItem, bool isLeft, bool isBack)
     {
-        if(isLeft)
+        weaponItem.modelPrefab.layer = 3;
+        Transform[] childrenComponents = weaponItem.modelPrefab.GetComponentsInChildren<Transform>(true);
+        foreach(Transform child in childrenComponents)
+        {
+            child.gameObject.layer = 3;
+        }
+        if (isLeft)
         {
             leftHandSlot.LoadWeaponModel(weaponItem);
             LoadLeftWeaponDamageCollider();
