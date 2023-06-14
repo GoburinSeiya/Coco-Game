@@ -6,9 +6,13 @@ public class playerMovement : MonoBehaviour
 {
     playerManager playermanager;
     inputManager inManager;
-    public Rigidbody rb;
     AnimationManager animatorManager;
     Animator animator;
+
+    //Gravedad
+    public float gravity = 9.8f;
+    Vector3 playerVelocity;
+
 
     //Moverse
     public Vector3 moveDirection;
@@ -17,47 +21,49 @@ public class playerMovement : MonoBehaviour
     public float rotationSpeed = 16;
 
     //Caeerse
-    public float airTime;
-    public float leapVelocity;
-    public float fallSpeed;
-    public float rayCastOffSet = 0.5f;
-    public LayerMask groundLayer;
+    public float fallvelocity;
+
     //Salto
-    public float maxHeight = 3;
-    public float gravityForce = -15f;
+    public float jumpForce;
+
     //comprobadores
     public bool isGrounded;
-    public bool isJumping;
+    public bool isJumping;  
+
+    public CharacterController characterController;
 
     private void Awake()
     {
         inManager = GetComponent<inputManager>();
-        rb = GetComponent<Rigidbody>();
+        characterController = GetComponent<CharacterController>();
         cameraObject = Camera.main.transform;
         //isGrounded = true;
         playermanager = GetComponent<playerManager>();
         animatorManager = GetComponent<AnimationManager>();
         animator = GetComponent<Animator>();
     }
+    private void Update()
+    {
+        if (characterController.isGrounded)
+        {
+            //animatorManager.PlayTargetAniamtion("Landing", false);
+        }
+    }
 
     public void allPublicMovement()
     {
-        HandleFallAndLanding();
-
+        HandleMovement();
+        HandleRotation();
+        SetGravity();
+        characterController.Move(moveDirection * Time.deltaTime);
         if (playermanager.isInteracting)
         {
             return;
         }
-        HandleMovement();
-        HandleRotation();
-
     }
+
     private void HandleMovement()
     {
-        if (isJumping)
-        {
-            return;
-        }
 
         moveDirection = cameraObject.forward * inManager.verticalInput;
         moveDirection += cameraObject.right * inManager.horizontalInput;
@@ -65,17 +71,11 @@ public class playerMovement : MonoBehaviour
         moveDirection.y = 0;
         moveDirection = moveDirection * moveSpeed;
 
-        Vector3 moveForce = moveDirection;
-        rb.velocity = moveForce;
     }
 
     private void HandleRotation()
     {
-
-        if (isJumping)
-        {
-            return;
-        }
+   
         Vector3 targetDirection = Vector3.zero;
 
         targetDirection = cameraObject.forward * inManager.verticalInput;
@@ -93,67 +93,57 @@ public class playerMovement : MonoBehaviour
         transform.rotation = playerRotation;
     }
 
-    private void HandleFallAndLanding()
+    public void HandleJumping()
     {
-        RaycastHit hit;
-        Vector3 rcastOrigin = transform.position;
-        Vector3 targetPosition;
-        rcastOrigin.y += rayCastOffSet;
-        targetPosition = transform.position;
-
-        if (!isGrounded && !isJumping)
-        {
-            if (!playermanager.isInteracting)
-            {
-                animatorManager.PlayTargetAniamtion("Falling", true);
-            }
-            airTime += Time.deltaTime;
-            rb.AddForce(transform.forward * leapVelocity);
-            rb.AddForce(-Vector3.up * fallSpeed * airTime);
-        }
-
-        if (Physics.SphereCast(rcastOrigin, 0.2f, Vector3.down, out hit, rayCastOffSet, groundLayer))
-        {
-            if (!isGrounded && !playermanager.isInteracting)
-            {
-                animatorManager.PlayTargetAniamtion("Landing", true);
-            }
-            
-            Vector3 rayCastHitPoint = hit.point;
-            targetPosition.y = rayCastHitPoint.y;
-            airTime = 0;
-            isGrounded = true;
-        }
-        else
+        if (characterController.isGrounded && !playermanager.isInteracting)
         {
             isGrounded = false;
-            animator.SetBool("isGrounded", false);
-        }
+            isJumping = true;
+            fallvelocity = jumpForce;
+            moveDirection.y = fallvelocity;
+            characterController.Move(moveDirection * Time.deltaTime);
+            animatorManager.animator.SetBool("isJumping", true);
+            animatorManager.PlayTargetAniamtion("Jump", true);
 
-        if(isGrounded && !isJumping)
-        {
-            if(playermanager.isInteracting || inManager.moveAmount > 0)
-            {
-                transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime /0.01f);
-            }
-            else
-            {
-                transform.position = targetPosition;
-            }
         }
 
     }
-    public void HandleJumping()
+
+    public virtual void HandleGroundCheck()
     {
-        if (isGrounded)
+     
+    }
+
+    public void SetGravity()
+    {
+        if (characterController.isGrounded)
         {
-            animatorManager.animator.SetBool("isJumping", true);
-            animatorManager.PlayTargetAniamtion("Jump", false);
-            Debug.Log("this works");
-            float jumpSpeed = Mathf.Sqrt(-2 * gravityForce * maxHeight);
-            Vector3 playerVelocity = moveDirection;
-            playerVelocity.y = jumpSpeed;
-            rb.velocity = playerVelocity;
+            isGrounded = true;
+            isJumping = false;
+            fallvelocity = -gravity * Time.deltaTime;
+            moveDirection.y = fallvelocity;
+            if (isGrounded)
+            {
+               // animatorManager.PlayTargetAniamtion("Landing", false);
+            }
+            else
+            {
+                animator.SetBool("isGrounded", false);
+            }
         }
+        else
+        {
+            animator.SetBool("Falling", false);
+
+            fallvelocity -= gravity * Time.deltaTime;
+            isGrounded = false;
+            moveDirection.y = fallvelocity;
+        }
+
+    }
+
+ 
+    private void OnDrawGizmosSelected()
+    {
     }
 }

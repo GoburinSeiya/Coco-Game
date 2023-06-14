@@ -8,9 +8,9 @@ public class WeaponPickUp : Interactable
 
     public override void Interact(playerManager PlayerManager)
     {
-        base.Interact(PlayerManager); 
+        base.Interact(PlayerManager);
 
-        //Recoger el arma y agregarla al inventario
+        // Recoger el arma y agregarla al inventario
         PickUpItem(PlayerManager);
     }
 
@@ -23,9 +23,9 @@ public class WeaponPickUp : Interactable
         playerInventory = PlayerManager.GetComponent<PlayerInventory>();
         PlayerMovement = PlayerManager.GetComponent<playerMovement>();
         animationManager = PlayerManager.GetComponentInChildren<AnimationManager>();
-        
-        PlayerMovement.rb.velocity = Vector3.zero; 
-        //animationManager.PlayTargetAniamtion("Pick up Item", true); animacion de looteo si es que hay
+
+        PlayerMovement.characterController.Move(Vector3.zero);
+        // animationManager.PlayTargetAniamtion("Pick up Item", true); animación de looteo si es que hay
         playerInventory.weaponInventory.Add(weapon);
         Destroy(gameObject);
     }

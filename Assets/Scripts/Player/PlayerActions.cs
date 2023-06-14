@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PlayerActions : MonoBehaviour
 {
-    Rigidbody rb;
+    CharacterController characterController;
     AnimationManager animationManager;
     playerManager PlayerManager;
     inputManager InputManager;
     public Transform tr;
     private bool inAnimation = false;
-    
 
     #region Variables Mordida
     GameObject HitboxPrefab;
@@ -33,13 +32,13 @@ public class PlayerActions : MonoBehaviour
     #endregion
     */
 
-    private void Awake() 
+    private void Awake()
     {
         PlayerManager = GetComponent<playerManager>();
         animationManager = GetComponentInChildren<AnimationManager>();
         PlayerManager = GetComponent<playerManager>();
         InputManager = GetComponent<inputManager>();
-        rb = GetComponent<Rigidbody>();
+        characterController = GetComponent<CharacterController>();
     }
 
     void Start()
@@ -51,12 +50,12 @@ public class PlayerActions : MonoBehaviour
 
     public void HandleBiteAttack()
     {
-        if(PlayerManager.isInteracting)
+        if (PlayerManager.isInteracting)
             return;
-            
-        else if(Time.time > start_time+cooldownBite)
+
+        else if (Time.time > start_time + cooldownBite)
         {
-            rb.velocity = Vector3.zero;
+            characterController.Move(Vector3.zero);
             Hitbox = GameObject.Instantiate(HitboxPrefab);
             Hitbox.transform.position = tr.position;
             Hitbox.transform.rotation = tr.rotation;
@@ -71,7 +70,7 @@ public class PlayerActions : MonoBehaviour
     {
         if (PlayerManager.isInteracting)
             return;
-        rb.velocity = Vector3.zero;
+        characterController.Move(Vector3.zero);
         animationManager.PlayTargetAniamtion(weapon.weaponLightAnimation, true);
     }
 
@@ -79,9 +78,9 @@ public class PlayerActions : MonoBehaviour
 
     public void HandleTorchAttack(WeaponItem weapon)
     {
-        if(PlayerManager.isInteracting)
+        if (PlayerManager.isInteracting)
             return;
-        rb.velocity = Vector3.zero;
+        characterController.Move(Vector3.zero);
         animationManager.PlayTargetAniamtion(weapon.weaponLightAnimation, true);
     }
 
@@ -94,15 +93,15 @@ public class PlayerActions : MonoBehaviour
     /*
     public void HandleBoomerangAttack(WeaponItem weapon, float heldTime, float startHeld)
     {
-        if(PlayerManager.isInteracting)
+        if (PlayerManager.isInteracting)
             return;
-        rb.velocity = Vector3.zero;
-        
+        characterController.Move(Vector3.zero);
+
         StopTimeCounter(heldTime, startHeld);
 
-        if(animationStage == 0)
+        if (animationStage == 0)
         {
-            if ((!holding && heldTime>minHold) || heldTime>maxHold)
+            if ((!holding && heldTime > minHold) || heldTime > maxHold)
             {
                 Debug.Log("Inicia el ataque de boomerang");
                 Bmrg = GameObject.Instantiate(Boomerang_Prefab);
@@ -127,10 +126,10 @@ public class PlayerActions : MonoBehaviour
 
             Bmrg.transform.position = Vector3.MoveTowards(Bmrg.transform.position, positionArray[animationStage - 1], moveSpeed);
 
-            if (Bmrg.transform.position == positionArray[animationStage-1])
+            if (Bmrg.transform.position == positionArray[animationStage - 1])
             {
                 animationStage++;
-                if (animationStage>3)
+                if (animationStage > 3)
                 {
                     animationStage = 0;
                     Destroy(Bmrg);

@@ -7,7 +7,7 @@ public class playerManager : MonoBehaviour
     inputManager inManager;
     playerMovement plyrMovement;
     CameraManager cameraManager;
-    Animator animator;
+    public Animator animator;
     WeaponSlotManager weaponSlotManager;
     WeaponPickUp weaponPickUp;
     PlayerInventory playerInventory;
@@ -26,22 +26,22 @@ public class playerManager : MonoBehaviour
         weaponPickUp = GetComponent<WeaponPickUp>();
         playerInventory = GetComponent<PlayerInventory>();
     }
-    private void Update()
+    private void FixedUpdate()
     {
         inManager.allPublicInputs();
 
         CheckForInteractableObject();
-    }
-    private void FixedUpdate()
-    {
+
         plyrMovement.allPublicMovement();
+
     }
+
     private void LateUpdate()
     {
         cameraManager.HandleAllCameraMovement();
 
         isInteracting = animator.GetBool("isInteracting");
-        plyrMovement.isJumping = animator.GetBool("isJumping");
+        //plyrMovement.isJumping = animator.GetBool("isJumping");
         animator.SetBool("isGrounded", plyrMovement.isGrounded);
 
         inManager.A_Input = false;
