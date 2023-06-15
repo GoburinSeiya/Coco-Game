@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18034688, g: 0.22579092, b: 0.3069597, a: 1}
+  m_IndirectSpecularColor: {r: 0.18034708, g: 0.22579134, b: 0.30696034, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -738,7 +738,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e45025ad9e762749966b3b7a6fa3505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boomerangSpawnTransform: {fileID: 0}
   moveSpeed: 0.03
   timeHeld: 0
   minHold: 1
@@ -788,7 +787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a76dc1ab44e1e7544bf55f968b64bc44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tr: {fileID: 822990622}
+  tr: {fileID: 0}
 --- !u!114 &822990612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,9 +812,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba0f3bd57263014ca26773266a5fb83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightWeapon: {fileID: 11400000, guid: 4322ee97aed01fc478c454bfac1c23b9, type: 2}
-  leftWeapon: {fileID: 11400000, guid: f434f5002fda9134fa56c913a30e7555, type: 2}
-  backWeapon: {fileID: 11400000, guid: 41243a05f9a74a441b053542ad61a8a7, type: 2}
+  rightWeapon: {fileID: 0}
+  leftWeapon: {fileID: 0}
+  backWeapon: {fileID: 0}
   weaponInventory: []
 --- !u!114 &822990614
 MonoBehaviour:
@@ -843,15 +842,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c69b96f43add6de488c1748d23f73a49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 100
+  rb: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
   moveSpeed: 7
   rotationSpeed: 16
-  fallvelocity: 0
-  jumpForce: 20
+  airTime: 0
+  leapVelocity: 1
+  fallSpeed: 33
+  rayCastOffSet: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  maxHeight: 1
+  gravityForce: -15
   isGrounded: 0
   isJumping: 0
-  characterController: {fileID: 822990623}
 --- !u!114 &822990616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -864,7 +869,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04002a666b8e324d979564509ff0e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 822990619}
   isInteracting: 0
   interactRange: 0.1
 --- !u!114 &822990617
@@ -890,7 +894,6 @@ MonoBehaviour:
   biteInput: 0
   axeInput: 0
   boomerangInput: 0
-  torchInput: 0
   A_Input: 0
 --- !u!114 &822990618
 MonoBehaviour:
@@ -904,7 +907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7ab64ec70508374b9cca051a618d572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 822990619}
+  animator: {fileID: 0}
 --- !u!95 &822990619
 Animator:
   serializedVersion: 5
@@ -935,34 +938,32 @@ CapsuleCollider:
   m_GameObject: {fileID: 822990607}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.2
   m_Height: 1.7990646
   m_Direction: 1
   m_Center: {x: 0, y: 1.0004678, z: 0}
---- !u!4 &822990622 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: db0608b7b6b31dd45b7467c9651de914, type: 3}
-  m_PrefabInstance: {fileID: 1179093584}
-  m_PrefabAsset: {fileID: 0}
---- !u!143 &822990623
-CharacterController:
+--- !u!54 &822990621
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822990607}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.81
-  m_Radius: 0.21
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!4 &822990622 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: db0608b7b6b31dd45b7467c9651de914, type: 3}
+  m_PrefabInstance: {fileID: 1179093584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &864641806
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2180,7 +2181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2321084097669945480, guid: 00b3adda287ff3f44a517157a875379c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.17
+      value: -2.8949995
       objectReference: {fileID: 0}
     - target: {fileID: 2321084097669945480, guid: 00b3adda287ff3f44a517157a875379c, type: 3}
       propertyPath: m_LocalPosition.y
