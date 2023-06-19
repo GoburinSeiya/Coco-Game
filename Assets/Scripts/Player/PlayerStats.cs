@@ -54,4 +54,19 @@ public class PlayerStats : MonoBehaviour
             //HandleGameOver();
         }
     }
+
+    public void Heal(int heal)
+    {
+        if ((currentHealth + heal)>=maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        else
+        {
+            currentHealth = currentHealth + heal;
+        }
+        healthBar.SetCurrentHealth(currentHealth);
+        //animationManager.PlayTargetAniamtion("Heal", true);
+        Debug.Log("Healed for" + heal);
+    }
 }
