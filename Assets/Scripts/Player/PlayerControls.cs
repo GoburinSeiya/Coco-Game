@@ -273,6 +273,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""29a1a9bc-767b-42c4-9574-5543baaba688"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -385,6 +394,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Torch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""283644b4-2f24-4f0d-bbdf-fa3520e3ac0f"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2c6db856-5920-4052-a5f4-145762f7292c"",
+                    ""path"": ""<Gamepad>/rightTriggerButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -441,6 +472,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActions_Axe = m_PlayerActions.FindAction("Axe", throwIfNotFound: true);
         m_PlayerActions_Boomerang = m_PlayerActions.FindAction("Boomerang", throwIfNotFound: true);
         m_PlayerActions_Torch = m_PlayerActions.FindAction("Torch", throwIfNotFound: true);
+        m_PlayerActions_Dash = m_PlayerActions.FindAction("Dash", throwIfNotFound: true);
         // Interactions
         m_Interactions = asset.FindActionMap("Interactions", throwIfNotFound: true);
         m_Interactions_Interactbutton = m_Interactions.FindAction("Interact button", throwIfNotFound: true);
@@ -564,6 +596,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Axe;
     private readonly InputAction m_PlayerActions_Boomerang;
     private readonly InputAction m_PlayerActions_Torch;
+    private readonly InputAction m_PlayerActions_Dash;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -573,6 +606,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Axe => m_Wrapper.m_PlayerActions_Axe;
         public InputAction @Boomerang => m_Wrapper.m_PlayerActions_Boomerang;
         public InputAction @Torch => m_Wrapper.m_PlayerActions_Torch;
+        public InputAction @Dash => m_Wrapper.m_PlayerActions_Dash;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -597,6 +631,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Torch.started += instance.OnTorch;
             @Torch.performed += instance.OnTorch;
             @Torch.canceled += instance.OnTorch;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
         }
 
         private void UnregisterCallbacks(IPlayerActionsActions instance)
@@ -616,6 +653,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Torch.started -= instance.OnTorch;
             @Torch.performed -= instance.OnTorch;
             @Torch.canceled -= instance.OnTorch;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
         }
 
         public void RemoveCallbacks(IPlayerActionsActions instance)
@@ -691,6 +731,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnAxe(InputAction.CallbackContext context);
         void OnBoomerang(InputAction.CallbackContext context);
         void OnTorch(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
     public interface IInteractionsActions
     {

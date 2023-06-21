@@ -28,6 +28,7 @@ public class inputManager : MonoBehaviour
     public bool axeInput;
     public bool boomerangInput;
     public bool torchInput;
+    public bool dashInput;
 
     [Header("Interacciones")]
     public bool A_Input;
@@ -56,6 +57,7 @@ public class inputManager : MonoBehaviour
             playerControls.PlayerActions.Torch.performed += i => torchInput = true;
             playerControls.PlayerActions.Boomerang.performed += i => boomerangInput = true; //Sintaxis para mantener el boton
             playerControls.PlayerActions.Boomerang.canceled += i => boomerangInput = false;
+            playerControls.PlayerActions.Dash.performed += i => dashInput = true; 
         }
 
         playerControls.Enable();
@@ -70,6 +72,7 @@ public class inputManager : MonoBehaviour
     {
         HandleMovementInput();
         HandleJumpInput();
+        HandleDash();
         HandleAttackInput();
         //HandleBoomerangInput();
         HandleInteractionInput();
@@ -95,6 +98,16 @@ public class inputManager : MonoBehaviour
             plyrMovement.HandleJumping();
         }
 
+    }
+
+    private void HandleDash()
+    {
+        if (dashInput)
+        {
+            dashInput = false;
+            Debug.Log("Dash input");
+            plyrMovement.HandleDash();
+        }
     }
 
     private void HandleAttackInput()

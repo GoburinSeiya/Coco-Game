@@ -57,16 +57,8 @@ public class PlayerStats : MonoBehaviour
 
     public void Heal(int heal)
     {
-        if ((currentHealth + heal)>=maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
-        else
-        {
-            currentHealth = currentHealth + heal;
-        }
+        currentHealth = currentHealth + heal;
         healthBar.SetCurrentHealth(currentHealth);
         //animationManager.PlayTargetAniamtion("Heal", true);
-        Debug.Log("Healed for" + heal);
     }
 }

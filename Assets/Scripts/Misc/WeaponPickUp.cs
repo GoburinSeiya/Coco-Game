@@ -24,7 +24,7 @@ public class WeaponPickUp : Interactable
         PlayerMovement = PlayerManager.GetComponent<playerMovement>();
         animationManager = PlayerManager.GetComponentInChildren<AnimationManager>();
         
-        PlayerMovement.rb.velocity = Vector3.zero; 
+        //PlayerMovement.rb.velocity = Vector3.zero; 
         //animationManager.PlayTargetAniamtion("Pick up Item", true); animacion de looteo si es que hay
         playerInventory.weaponInventory.Add(weapon);
         Destroy(gameObject);
