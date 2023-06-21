@@ -1224,7 +1224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   isInteracting: 0
-  interactRange: 0.1
+  interactRange: 0.5
 --- !u!114 &822990617
 MonoBehaviour:
   m_ObjectHideFlags: 0
