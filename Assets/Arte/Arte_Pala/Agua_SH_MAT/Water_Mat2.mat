@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water_Mat
-  m_Shader: {fileID: -6465566751694194690, guid: 83cce1231401be84d83bf434b9b23076, type: 3}
+  m_Name: Water_Mat2
+  m_Shader: {fileID: -6465566751694194690, guid: d4f0a163defbb6844a1e57edb587a9f0, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -91,11 +91,13 @@ Material:
     - _BumpScale: 1
     - _CausticCutout: 0.015
     - _CausticsSpeed: 0.03
-    - _CausticsTiling: 0.6
+    - _CausticsTiling: 8.31
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DephtFade_2: 0
+    - _Depht_Fade_1: 0
     - _Depth: 6.18
     - _Depth_Fall_off: 7.69
     - _DetailAlbedoMapScale: 1
@@ -103,10 +105,10 @@ Material:
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _FoamCutOut: 177.9
-    - _FoamDepth: 4.12
-    - _FoamFallOff: 26.45
+    - _FoamDepth: 2.96
+    - _FoamFallOff: 19.99
     - _FoamShoreWidth: 0.5
-    - _FoamTiling: -767.18
+    - _FoamTiling: 22.72
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -122,7 +124,7 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _WaveIntensity: 0.1
-    - _WaveSpeed: 0.5
+    - _WaveSpeed: 1.39
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
@@ -130,13 +132,13 @@ Material:
     - _CausticColor: {r: 2.3874164, g: 2.3874164, b: 2.3874164, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FoamColor: {r: 0.7216981, g: 0.8018868, b: 0.75690293, a: 0}
+    - _FoamColor: {r: 0.45660377, g: 1, b: 0.6945232, a: 0}
     - _FoamSpeed: {r: 0, g: 0.05, b: 0, a: 0}
-    - _MainColor: {r: 0.073264495, g: 0.22999229, b: 0.26415092, a: 0}
-    - _ShoreColor: {r: 0.24313726, g: 0.58431375, b: 0.329373, a: 0}
+    - _MainColor: {r: 0.0117647005, g: 0.32941177, b: 0.22026308, a: 0}
+    - _ShoreColor: {r: 0.24313726, g: 0.58431375, b: 0.3865574, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &3278806872176043337
+--- !u!114 &4647452303321443583
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
