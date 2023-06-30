@@ -1209,7 +1209,7 @@ MonoBehaviour:
   moveSpeed: 7
   rotationSpeed: 16
   fallvelocity: 0
-  jumpForce: 10
+  jumpForce: 5
   dashSpeed: 2
   dashTime: 0.2
   isGrounded: 0
