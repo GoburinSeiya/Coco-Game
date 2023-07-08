@@ -29,9 +29,9 @@ public class Attack_Torch : MonoBehaviour
         {
             Debug.Log("Inicia el ataque");
             Torch = GameObject.Instantiate(Torch_Prefab);
-            Torch.transform.SetParent(this.gameObject.transform);
+            //Torch.transform.SetParent(this.gameObject.transform);
             Torch.transform.rotation = tr.rotation;
-            Torch.transform.position = tr.position;
+            Torch.transform.position = tr.position+Vector3.up;
             Torch.transform.position += Torch.transform.rotation * Vector3.forward * 2;
             Torch.transform.RotateAround(tr.position, Vector3.up, 60);
 

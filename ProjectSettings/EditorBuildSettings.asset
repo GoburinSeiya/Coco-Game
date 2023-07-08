@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nivel1/Nivel 1 Sin Paredes.unity
     guid: dc202fbf9c367f54680119542e870c81
+  - enabled: 1
+    path: Assets/Scenes/Nivel1/Cofre.unity
+    guid: d89b4402e77dd0a438dfd0be896e55c4
   m_configObjects: {}
