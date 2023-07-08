@@ -704,6 +704,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1936732295}
     m_Modifications:
+    - target: {fileID: 7255585442176243648, guid: 9b80b1be3465b7045a30c3926da7c551, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7255585442176243649, guid: 9b80b1be3465b7045a30c3926da7c551, type: 3}
       propertyPath: leverNumber
       value: 3
