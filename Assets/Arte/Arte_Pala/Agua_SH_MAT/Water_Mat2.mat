@@ -123,8 +123,8 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _WaveIntensity: 0.1
-    - _WaveSpeed: 1.39
+    - _WaveIntensity: 0.005
+    - _WaveSpeed: 0.81
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
@@ -132,9 +132,9 @@ Material:
     - _CausticColor: {r: 2.3874164, g: 2.3874164, b: 2.3874164, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FoamColor: {r: 0.45660377, g: 1, b: 0.6945232, a: 0}
+    - _FoamColor: {r: 0.48490566, g: 1, b: 0.7109543, a: 0}
     - _FoamSpeed: {r: 0, g: 0.05, b: 0, a: 0}
-    - _MainColor: {r: 0.0117647005, g: 0.32941177, b: 0.22026308, a: 0}
+    - _MainColor: {r: 0.08987184, g: 0.15188925, b: 0.254717, a: 0}
     - _ShoreColor: {r: 0.24313726, g: 0.58431375, b: 0.3865574, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
