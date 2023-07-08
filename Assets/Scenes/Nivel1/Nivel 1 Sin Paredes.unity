@@ -311,7 +311,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 56243855}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -3707,7 +3707,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3436951031517718790, guid: 5b40f308e27e3d74686bf167b6cbf49e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.31
+      value: -1.212
       objectReference: {fileID: 0}
     - target: {fileID: 3436951031517718790, guid: 5b40f308e27e3d74686bf167b6cbf49e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3715,7 +3715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3436951031517718790, guid: 5b40f308e27e3d74686bf167b6cbf49e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.259
+      value: 0.917
       objectReference: {fileID: 0}
     - target: {fileID: 3436951031517718790, guid: 5b40f308e27e3d74686bf167b6cbf49e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3792,6 +3792,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3436951031517718790, guid: 5b40f308e27e3d74686bf167b6cbf49e, type: 3}
   m_PrefabInstance: {fileID: 1060893873}
   m_PrefabAsset: {fileID: 0}
+--- !u!135 &1060893880
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060893874}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.07
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1060893881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060893874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9060ddd02bfd5544a25ade8769bcb20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tags:
+  - PopUpElements
 --- !u!1001 &1081524204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4579,8 +4606,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed284bf37ddacf945aeba050d2c42612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tagDetect: PopUpElements
+  childNameUI: 
   radius: 2.5
-  otherObject: {fileID: 0}
 --- !u!135 &1310716594
 SphereCollider:
   m_ObjectHideFlags: 0
