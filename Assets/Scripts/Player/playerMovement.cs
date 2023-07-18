@@ -96,7 +96,7 @@ public class playerMovement : MonoBehaviour
 
     public void HandleJumping()
     {
-        if (characterController.isGrounded && !playermanager.isInteracting)
+        if (characterController.isGrounded && !playermanager.isInteracting && StaminaManager.instance.stamina >= 15)
         {
             isGrounded = false;
             isJumping = true;
@@ -105,14 +105,20 @@ public class playerMovement : MonoBehaviour
             characterController.Move(moveDirection * Time.deltaTime);
             animatorManager.animator.SetBool("isJumping", true);
             animatorManager.PlayTargetAniamtion("Jump", true);
-
+            StaminaManager.instance.useStamina(15);
         }
 
     }
 
     public void HandleDash()
     {
-        StartCoroutine(Dash());
+        if (StaminaManager.instance.stamina >= 20)
+        {
+            StaminaManager.instance.useStamina(20);
+            StartCoroutine(Dash());
+
+        }
+
     }
 
     IEnumerator Dash()

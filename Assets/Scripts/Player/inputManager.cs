@@ -92,34 +92,38 @@ public class inputManager : MonoBehaviour
 
     private void HandleJumpInput()
     {
-        if (jump_input)
+        if (jump_input && StaminaManager.instance.stamina >= 0)
         {
             jump_input = false;
             plyrMovement.HandleJumping();
+            StaminaManager.instance.useStamina(15);
         }
 
     }
 
     private void HandleDash()
     {
-        if (dashInput)
+        if (dashInput && StaminaManager.instance.stamina >= 0)
         {
             dashInput = false;
             Debug.Log("Dash input");
             plyrMovement.HandleDash();
+            StaminaManager.instance.useStamina(20);
         }
     }
 
     private void HandleAttackInput()
     {
-        if(biteInput)
+        if(biteInput && StaminaManager.instance.stamina >= 0)
         {
             Debug.Log("Bite");
             biteInput = false;
             playerActions.HandleBiteAttack();
+            StaminaManager.instance.useStamina(15);
+
         }
 
-        if(axeInput)
+        if (axeInput)
         {
             Debug.Log("Axe");
             axeInput = false;
@@ -127,9 +131,10 @@ public class inputManager : MonoBehaviour
             {
                 return;
             }
-            else
+            else if(StaminaManager.instance.stamina >= 0)
             {
                 playerActions.HandleAxeAttack(playerInventory.rightWeapon);
+                StaminaManager.instance.useStamina(10);
             }
         }
 
@@ -141,11 +146,13 @@ public class inputManager : MonoBehaviour
             {
                 return;
             }
-            else
+            else if(StaminaManager.instance.stamina >= 0)
             {
                 playerActions.HandleTorchAttack(playerInventory.leftWeapon);
+                StaminaManager.instance.useStamina(10);
+
             }
-            
+
         }
     }
 
