@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bribdge : MonoBehaviour
 {
+    public Torch[] placedTorches; //Arreglo de objetos con el script de 'PlacedTorch'
     public int torchNumber;
     public int torchesLit = 0;
 
