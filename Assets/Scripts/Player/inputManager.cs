@@ -92,7 +92,7 @@ public class inputManager : MonoBehaviour
 
     private void HandleJumpInput()
     {
-        if (jump_input && StaminaManager.instance.stamina >= 0)
+        if (jump_input)
         {
             jump_input = false;
             plyrMovement.HandleJumping();
@@ -103,7 +103,7 @@ public class inputManager : MonoBehaviour
 
     private void HandleDash()
     {
-        if (dashInput && StaminaManager.instance.stamina >= 0)
+        if (dashInput)
         {
             dashInput = false;
             Debug.Log("Dash input");
@@ -114,7 +114,7 @@ public class inputManager : MonoBehaviour
 
     private void HandleAttackInput()
     {
-        if(biteInput && StaminaManager.instance.stamina >= 0)
+        if(biteInput && StaminaManager.instance.stamina >= 15)
         {
             Debug.Log("Bite");
             biteInput = false;
@@ -131,7 +131,7 @@ public class inputManager : MonoBehaviour
             {
                 return;
             }
-            else if(StaminaManager.instance.stamina >= 0)
+            else if(StaminaManager.instance.stamina >= 10)
             {
                 playerActions.HandleAxeAttack(playerInventory.rightWeapon);
                 StaminaManager.instance.useStamina(10);
@@ -146,7 +146,7 @@ public class inputManager : MonoBehaviour
             {
                 return;
             }
-            else if(StaminaManager.instance.stamina >= 0)
+            else if(StaminaManager.instance.stamina >= 10)
             {
                 playerActions.HandleTorchAttack(playerInventory.leftWeapon);
                 StaminaManager.instance.useStamina(10);
